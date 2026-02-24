@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Макаров Илья Алексеевич — Project Manager AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafaf9;
+            --text: #1c1917;
+            --muted: #57534e;
+            --accent: #b91c1c;
+            --border: #d6d3d1;
+            --card: #ffffff;
+            --tag-bg: #f5f5f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.45;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            padding: 28px 32px 20px;
+            border-bottom: 2px solid var(--text);
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .header .role {
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .header .specs {
+            font-size: 11.5px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .contacts {
+            text-align: right;
+            font-size: 12px;
+            line-height: 1.6;
+            white-space: nowrap;
+        }
+
+        .contacts a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contacts a:hover { border-color: var(--accent); color: var(--accent); }
+
+        .contacts .location {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        /* Main content */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 0;
+        }
+
+        .main {
+            padding: 18px 24px 24px 32px;
+            border-right: 1px solid var(--border);
+        }
+
+        .sidebar {
+            padding: 18px 24px 24px 20px;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .job:last-child { margin-bottom: 0; }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .job-company {
+            font-weight: 700;
+            font-size: 13.5px;
+        }
+
+        .job-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .job-role {
+            font-size: 12px;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .job-desc {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .job ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job li {
+            font-size: 12px;
+            line-height: 1.4;
+            padding-left: 12px;
+            position: relative;
+            margin-bottom: 1px;
+        }
+
+        .job li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Sidebar sections */
+        .sidebar-section {
+            margin-bottom: 16px;
+        }
+
+        .sidebar-section:last-child { margin-bottom: 0; }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .skill-tag {
+            font-size: 10.5px;
+            padding: 2px 7px;
+            background: var(--tag-bg);
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 11.5px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .about-text p { margin-bottom: 6px; }
+        .about-text p:last-child { margin-bottom: 0; }
+
+        /* Stack section */
+        .stack-block {
+            margin-bottom: 8px;
+        }
+        .stack-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .stack-items {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Education */
+        .edu-item {
+            font-size: 12px;
+        }
+        .edu-item .edu-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--muted);
+        }
+
+        /* Links */
+        .link-list {
+            font-size: 11.5px;
+            line-height: 1.7;
+        }
+        .link-list a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+        .link-list a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 14px 0;
+        }
+
+        /* Print */
+        @media print {
+            body { font-size: 12px; }
+            .page { box-shadow: none; }
+        }
+
+        @media (max-width: 640px) {
+            .content { grid-template-columns: 1fr; }
+            .main { border-right: none; border-bottom: 1px solid var(--border); }
+            .header { grid-template-columns: 1fr; }
+            .contacts { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>Макаров Илья Алексеевич</h1>
+                <div class="role">Project Manager AI</div>
+                <div class="specs">Бизнес-аналитик · Менеджер продукта · Полная занятость · Удалённо / Гибрид / Офис</div>
+            </div>
+            <div class="contacts">
+                <div>+7 (995) 598-00-47</div>
+                <div><a href="mailto:ili1mak@ya.ru">ili1mak@ya.ru</a></div>
+                <div>TG: <a href="https://t.me/makarov_mee">@makarov_mee</a></div>
+                <div>Блог: <a href="https://t.me/im_projects">t.me/im_projects</a></div>
+                <div class="location">Пермь · Готов к переезду и командировкам</div>
+            </div>
+        </header>
+
+        <div class="content">
+            <!-- Main column -->
+            <div class="main">
+                <div class="section-title">Опыт работы — 6 лет 8 месяцев</div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Личные проекты</span>
+                        <span class="job-period">06.2025 — 09.2025</span>
+                    </div>
+                    <div class="job-role">Project AI</div>
+                    <div class="job-desc">Разработка и запуск микро-продуктов (No-code, Vibe Coding)</div>
+                    <ul>
+                        <li>TG-боты: AI Follow-up переписок, создание задач из переписок в Google Tasks</li>
+                        <li>Участник AI Mindset Community — разбор и шэринг кейсов</li>
+                        <li>Спикер GConf: "MVP из говна и палок с Vibe Coding"</li>
+                        <li>Спикер AI Meetup Perm: "MVP за часы, а не недели"</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Spycat Agency</span>
+                        <span class="job-period">05.2022 — 05.2025</span>
+                    </div>
+                    <div class="job-role">Project Manager · Разработка виральных приложений · 3 года 1 мес</div>
+                    <ul>
+                        <li>Сократил время доставки контента в приложения с 2х-3х дней до 30 минут</li>
+                        <li>Удерживал маржинальность проектов 55-60%</li>
+                        <li>Успешно завершил 17 проектов (VK/TG mini apps, TG-боты с AI). Бюджет 0,8–3,5 млн ₽</li>
+                        <li>Сократил процесс пресейла с 5 до 3 дней</li>
+                        <li>Внедрил груминги, MoSCoW, ретроспективы, 1-1 с командой</li>
+                        <li>Совместные ретро с клиентами → клиенты возвращались за новыми проектами</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Toloka.ai (ex. Яндекс.Толока)</span>
+                        <span class="job-period">05.2021 — 04.2022</span>
+                    </div>
+                    <div class="job-role">Product Manager · 1 год</div>
+                    <ul>
+                        <li>Увеличил конверсию активации с 3% до 9% упрощая CJM</li>
+                        <li>Реализовал 2 проекта по retention опираясь на RICE</li>
+                        <li>Провел 10+ UX-тестов и 20+ глубинных интервью</li>
+                        <li>Внедрил метрику CES для измерения сложности интерфейса</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-company">Яндекс</span>
+                        <span class="job-period">02.2019 — 05.2021</span>
+                    </div>
+                    <div class="job-role">Project Manager · 2 года 4 мес</div>
+                    <ul>
+                        <li>Сэкономил 100М ₽/год на автоматизации (CV, ML, Speech Recognition)</li>
+                        <li>Запустил UX-lab → ускорили в x2,5 работу пользователей в 7 внутренних инструментах</li>
+                        <li>Исследование сегментов по JTBD → результаты учли в планировании на полугодие</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="section-title">Обо мне</div>
+                    <div class="about-text">
+                        <p>Проджект с продуктовым опытом. 5,5 лет управляю в продуктовых и аутсорс командах. Запускаю и внедряю инструменты для оптимизации процессов.</p>
+                        <p>Работаю по OKR. Решения на данных и обратной связи. Слежу за состоянием команды.</p>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="sidebar-section">
+                    <div class="section-title">Стек</div>
+                    <div class="stack-block">
+                        <div class="stack-label">Продукт</div>
+                        <div class="stack-items">JTBD, глубинные интервью, UX-тесты, MVP, CJM, A/B тесты, PRD, Job Stories</div>
+                    </div>
+                    <div class="stack-block">
+                        <div class="stack-label">Проджект</div>
+                        <div class="stack-items">Scrum, Kanban, Roadmap, Project Timeline, User Stories, Flow, Use Cases</div>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="sidebar-section">
+                    <div class="section-title">Навыки</div>
+                    <div class="skills-list">
+                        <span class="skill-tag">Project management</span>
+                        <span class="skill-tag">Scrum</span>
+                        <span class="skill-tag">Kanban</span>
+                        <span class="skill-tag">UX</span>
+                        <span class="skill-tag">B2B</span>
+                        <span class="skill-tag">MVP</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JTBD</span>
+                        <span class="skill-tag">CustDev</span>
+                        <span class="skill-tag">ICE</span>
+                        <span class="skill-tag">A/B тесты</span>
+                        <span class="skill-tag">Визуализация</span>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="sidebar-section">
+                    <div class="section-title">Образование</div>
+                    <div class="edu-item">
+                        <div><strong>ПХТТ</strong></div>
+                        <div>Прикладное программирование</div>
+                        <div class="edu-year">2017 · Среднее специальное</div>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="sidebar-section">
+                    <div class="section-title">Язык</div>
+                    <div style="font-size: 12px;">Русский — родной</div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="sidebar-section">
+                    <div class="section-title">Ссылки</div>
+                    <div class="link-list">
+                        <div><a href="https://t.me/im_projects">Блог про микро-продукты</a></div>
+                        <div><a href="https://t.me/makarov_mee">Telegram</a></div>
+                        <div><a href="https://aimindset.org/">AI Mindset Community</a></div>
+                        <div><a href="https://gemdoc.ru/doc/io2pebs64grb">Проекты</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
