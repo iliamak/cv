@@ -3,258 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Макаров Илья Алексеевич — Project Manager / Product Manager</title>
+    <title>CV — Макаров Илья · A+B</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fafaf9;
+            --bg: #f5f5f4;
             --text: #1c1917;
-            --muted: #57534e;
+            --muted: #78716c;
             --accent: #b91c1c;
-            --border: #d6d3d1;
+            --border: #e7e5e4;
             --card: #ffffff;
-            --tag-bg: #f5f5f4;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'DM Sans', sans-serif;
             background: var(--bg);
             color: var(--text);
             font-size: 13px;
-            line-height: 1.45;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
+        .page { max-width: 860px; margin: 0 auto; min-height: 100vh; }
 
-        .page {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card);
-            min-height: 100vh;
-        }
-
+        /* ── Header ── */
         .header {
+            background: var(--card);
+            border-radius: 12px 12px 0 0;
+            margin-top: 20px;
             display: grid;
             grid-template-columns: 1fr auto;
             gap: 24px;
-            padding: 28px 32px 20px;
-            border-bottom: 2px solid var(--text);
+            padding: 32px 36px 24px;
+            border-bottom: 3px solid var(--text);
         }
-
-        .header h1 {
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-        }
-
-        .header .role {
-            font-size: 14px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .header .specs {
-            font-size: 11.5px;
-            color: var(--muted);
-            margin-top: 2px;
-        }
-
-        .contacts {
-            text-align: right;
-            font-size: 12px;
-            line-height: 1.6;
-            white-space: nowrap;
-        }
-
-        .contacts a {
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
+        .header .role { font-size: 15px; color: var(--accent); font-weight: 600; margin-top: 6px; }
+        .header .specs { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+        .contacts { text-align: right; font-size: 12px; line-height: 1.7; white-space: nowrap; }
+        .contacts a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
         .contacts a:hover { border-color: var(--accent); color: var(--accent); }
+        .contacts .location { color: var(--muted); font-size: 11px; margin-top: 3px; }
 
-        .contacts .location {
-            color: var(--muted);
-            font-size: 11px;
-            margin-top: 2px;
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 220px;
-            gap: 0;
-        }
-
-        .main {
-            padding: 18px 24px 24px 32px;
-            border-right: 1px solid var(--border);
-        }
-
+        /* ── Layout ── */
+        .content { display: grid; grid-template-columns: 1fr 232px; }
+        .main { padding: 20px 20px 32px 0; }
         .sidebar {
-            padding: 18px 24px 24px 20px;
+            background: var(--card);
+            padding: 24px 24px 32px 22px;
+            border-left: 1px solid var(--border);
+            border-radius: 0 0 12px 0;
         }
 
         .section-title {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-            margin-bottom: 10px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--accent); margin-bottom: 12px;
             font-family: 'JetBrains Mono', monospace;
         }
+        .main-header { padding: 0 0 0 8px; margin-bottom: 4px; }
 
-        .job {
-            margin-bottom: 13px;
-            position: relative;
+        /* ── Job cards ── */
+        .job-card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 18px 24px 18px 20px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--border);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-
-        .job:last-child { margin-bottom: 0; }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 8px;
+        .job-card:hover {
+            border-left-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-
-        .job-company {
-            font-weight: 700;
-            font-size: 13.5px;
-        }
-
+        .job-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+        .job-company { font-weight: 700; font-size: 14px; line-height: 1.2; }
         .job-period {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10.5px;
-            color: var(--muted);
-            white-space: nowrap;
-            flex-shrink: 0;
+            font-size: 10.5px; color: var(--muted); white-space: nowrap; flex-shrink: 0;
         }
-
-        .job-role {
-            font-size: 12px;
-            color: var(--muted);
-            font-style: italic;
-            margin-bottom: 4px;
-        }
-
+        .job-role { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 2px; }
         .job-desc {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 4px;
+            font-size: 12px; color: var(--muted); margin-top: 6px;
+            padding-bottom: 8px; border-bottom: 1px solid var(--border);
         }
-
-        .job ul {
-            list-style: none;
-            padding: 0;
+        .job-card ul { list-style: none; padding: 0; margin-top: 10px; display: grid; gap: 3px; }
+        .job-card li {
+            font-size: 12.5px; line-height: 1.5; padding-left: 16px;
+            position: relative; color: #44403c;
         }
-
-        .job li {
-            font-size: 12px;
-            line-height: 1.4;
-            padding-left: 12px;
-            position: relative;
-            margin-bottom: 1px;
+        .job-card li::before {
+            content: '→'; position: absolute; left: 0;
+            color: var(--accent); font-size: 11px; font-weight: 500;
         }
+        .job-card li strong { font-weight: 700; color: var(--text); }
 
-        .job li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .sidebar-section {
-            margin-bottom: 14px;
-        }
-
+        /* ── Sidebar ── */
+        .sidebar-section { margin-bottom: 16px; }
         .sidebar-section:last-child { margin-bottom: 0; }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-
-        .skill-tag {
-            font-size: 10.5px;
-            padding: 2px 7px;
-            background: var(--tag-bg);
-            border-radius: 3px;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text);
-            line-height: 1.5;
-        }
-
-        .about-text {
-            font-size: 11.5px;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-
-        .about-text p { margin-bottom: 6px; }
+        .about-text { font-size: 12px; color: var(--muted); line-height: 1.55; }
+        .about-text p { margin-bottom: 8px; }
         .about-text p:last-child { margin-bottom: 0; }
-
-        .stack-block {
-            margin-bottom: 6px;
-        }
+        .stack-block { margin-bottom: 8px; }
         .stack-label {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 2px;
             font-family: 'JetBrains Mono', monospace;
         }
-        .stack-items {
-            font-size: 11px;
-            color: var(--muted);
-            line-height: 1.4;
-        }
+        .stack-items { font-size: 11px; color: var(--muted); line-height: 1.45; }
+        .edu-item { font-size: 12px; }
+        .edu-item .edu-year { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--muted); }
+        .link-list { font-size: 11.5px; line-height: 1.8; }
+        .link-list a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+        .link-list a:hover { color: var(--accent); border-color: var(--accent); }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
 
-        .edu-item {
-            font-size: 12px;
-        }
-        .edu-item .edu-year {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10.5px;
-            color: var(--muted);
-        }
-
-        .link-list {
-            font-size: 11.5px;
-            line-height: 1.7;
-        }
-        .link-list a {
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border);
-        }
-        .link-list a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 12px 0;
-        }
-
-        @media print {
-            body { font-size: 12px; }
-            .page { box-shadow: none; }
-        }
-
-        @media (max-width: 640px) {
+        @media print { body { background: #fff; } .job-card { box-shadow: none; border-radius: 0; } }
+        @media (max-width: 700px) {
             .content { grid-template-columns: 1fr; }
-            .main { border-right: none; border-bottom: 1px solid var(--border); }
+            .sidebar { border-left: none; border-top: 1px solid var(--border); border-radius: 0 0 12px 12px; }
+            .main { padding: 16px 0; }
             .header { grid-template-columns: 1fr; }
             .contacts { text-align: left; }
         }
@@ -266,7 +133,7 @@
             <div>
                 <h1>Макаров Илья Алексеевич</h1>
                 <div class="role">Project Manager / Product Manager</div>
-                <div class="specs">Опыт в образовательных и просветительских проектах · Полная занятость · Удалённо / Гибрид / Офис</div>
+                <div class="specs">Полная занятость · Удалённо / Гибрид (СПБ, ЕКБ, ПЕРМЬ) / Офис</div>
             </div>
             <div class="contacts">
                 <div>+7 (995) 598-00-47</div>
@@ -279,10 +146,12 @@
 
         <div class="content">
             <div class="main">
-                <div class="section-title">Опыт работы — 6 лет 8 месяцев</div>
+                <div class="main-header">
+                    <div class="section-title">Опыт работы — 6 лет 8 месяцев</div>
+                </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Mental Fest Perm 2025</span>
                         <span class="job-period">11.2024 — 02.2025</span>
                     </div>
@@ -291,13 +160,13 @@
                     <ul>
                         <li>С нуля запустил фестиваль ментального здоровья в Перми</li>
                         <li>Собрал и координировал команду проекта и никто не поругались :)</li>
-                        <li>С бюджетом в 10К рублей привлек ~70 гостей на двухдневный фестиваль</li>
+                        <li>С бюджетом в <strong>10К рублей</strong> привлек <strong>~70 гостей</strong> на двухдневный фестиваль</li>
                         <li>Разработал ToV, запустил регулярный постинг в <a href="https://t.me/mental_fest" style="color:var(--text);border-bottom:1px solid var(--border)">ТГ-канал</a> и других соц сетях</li>
                     </ul>
                 </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Indie Product</span>
                         <span class="job-period">4 месяца</span>
                     </div>
@@ -311,59 +180,59 @@
                     </ul>
                 </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Spycat Agency Project Manager</span>
                         <span class="job-period">05.2022 — 05.2025 (3 года)</span>
                     </div>
                     <div class="job-desc">Управление разработкой виральных образовательных TG/VK ботов и мини-приложений</div>
                     <ul>
-                        <li>Успешно завершил 17 проектов (VK/TG mini apps, TG-боты с AI). Бюджет 1–3,5 млн ₽</li>
-                        <li>Удерживал маржинальность проектов 55-60%</li>
-                        <li>Сократил время доставки контента в приложения с 2-3 дней до 30 минут</li>
-                        <li>Выстроил воронку производства и сократил процесс пресейла с 5 до 3 дней</li>
+                        <li>Успешно завершил <strong>17 проектов</strong> (VK/TG mini apps, TG-боты с AI). Бюджет <strong>1–3,5 млн ₽</strong></li>
+                        <li>Удерживал маржинальность проектов <strong>55-60%</strong></li>
+                        <li>Сократил время доставки контента в приложения с 2-3 дней до <strong>30 минут</strong></li>
+                        <li>Выстроил воронку производства и сократил процесс пресейла с 5 до <strong>3 дней</strong></li>
                         <li>Внедрил груминги, ретроспективы, 1-1 с командой</li>
                         <li>Совместные ретро с клиентами → возврат клиентов за новыми проектами</li>
                     </ul>
                 </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Toloka.ai (ex. Яндекс.Толока) · Product Manager</span>
                         <span class="job-period">05.2021 — 04.2022 (1 год)</span>
                     </div>
                     <div class="job-desc">Управление фича командой (12 человек), отвечал за рост Активации</div>
                     <ul>
-                        <li>Увеличил конверсию в активацию с 3% до 9%, упрощая CJM</li>
-                        <li>Реализовал 2 проекта по retention опираясь на RICE</li>
-                        <li>Провел 10+ UX-тестов и 20+ глубинных интервью</li>
+                        <li>Увеличил конверсию в активацию с <strong>3% до 9%</strong>, упрощая CJM</li>
+                        <li>Реализовал <strong>2 проекта</strong> по retention опираясь на RICE</li>
+                        <li>Провел <strong>10+ UX-тестов</strong> и <strong>20+ глубинных интервью</strong></li>
                         <li>Внедрил метрику CES для измерения сложности интерфейса</li>
                     </ul>
                 </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Яндекс · Project Manager</span>
                         <span class="job-period">02.2019 — 05.2021 (2 года 4 мес.)</span>
                     </div>
                     <div class="job-desc">Управление 3 проектными командами (20 человек), запуск внутренних инструментов. Генерировал гипотезы, собирал требования, выявлял узкие места в процессах</div>
                     <ul>
-                        <li>Сэкономил 100М ₽/год на автоматизации (CV, ML, Speech Recognition)</li>
-                        <li>Запустил UX-lab → ускорили в x2,5 работу пользователей в 7 внутренних инструментах</li>
+                        <li>Сэкономил <strong>100М ₽/год</strong> на автоматизации (CV, ML, Speech Recognition)</li>
+                        <li>Запустил UX-lab → ускорили в <strong>x2,5</strong> работу пользователей в <strong>7 внутренних инструментах</strong></li>
                         <li>Провел исследование сегментов по JTBD → результаты учли в планировании на полугодие</li>
                     </ul>
                 </div>
 
-                <div class="job">
-                    <div class="job-header">
+                <div class="job-card">
+                    <div class="job-top">
                         <span class="job-company">Microsoft Россия · волонтер → стажер менеджер студенческих программ</span>
                         <span class="job-period">2017-2018</span>
                     </div>
                     <ul>
                         <li>Запустил серию дней технологий в школах и вузах Перми</li>
-                        <li>Запустил 4 хакатона для студентов</li>
-                        <li>Организовал региональный финал Imagine Cup 2017</li>
-                        <li>Организовал 2 партнёрских стартап-питча совместно с ФРИИ и инкубатором Ингрия</li>
+                        <li>Запустил <strong>4 хакатона</strong> для студентов</li>
+                        <li>Организовал региональный финал <strong>Imagine Cup 2017</strong></li>
+                        <li>Организовал <strong>2 партнёрских стартап-питча</strong> совместно с ФРИИ и инкубатором Ингрия</li>
                         <li>Взаимодействовал с администрацией школ, ССУЗов и ВУЗов</li>
                     </ul>
                 </div>
@@ -377,35 +246,16 @@
                         <p>В свободное время организовываю психологические мероприятия.</p>
                     </div>
                 </div>
-
                 <hr class="divider">
-
                 <div class="sidebar-section">
                     <div class="section-title">Навыки</div>
-                    <div class="stack-block">
-                        <div class="stack-label">Управление</div>
-                        <div class="stack-items">Scrum, Kanban, Agile, Gantt, MoSCoW, User Stories, Use Cases, </div>
-                    </div>
-                    <div class="stack-block">
-                        <div class="stack-label">Продукт</div>
-                        <div class="stack-items">JTBD, CJM, MVP, RICE, A/B тесты, UX-тесты, PRD, Job Stories</div>
-                    </div>
-                    <div class="stack-block">
-                        <div class="stack-label">Инструменты</div>
-                        <div class="stack-items">Jira, Figma, SQL, Data Lens, Make, Active Pices, Claude/GPT, Lovable</div>
-                    </div>
-                    <div class="stack-block">
-                        <div class="stack-label">Маркетинг</div>
-                        <div class="stack-items">Сегментация ЦА и упаковка коммуникации, поиск каналов привлечения, работа с инфлюенсерами, копирайтинг и расчет стоимости привлечения</div>
-                    </div>
-                    <div class="stack-block">
-                        <div class="stack-label">Технологии</div>
-                        <div class="stack-items">AI, TG-боты, VK/TG mini apps, CV, ML, Speech Recognition</div>
-                    </div>
+                    <div class="stack-block"><div class="stack-label">Управление</div><div class="stack-items">Scrum, Kanban, Agile, Gantt, MoSCoW, User Stories, Use Cases</div></div>
+                    <div class="stack-block"><div class="stack-label">Продукт</div><div class="stack-items">JTBD, CJM, MVP, RICE, A/B тесты, UX-тесты, PRD, Job Stories</div></div>
+                    <div class="stack-block"><div class="stack-label">Инструменты</div><div class="stack-items">Jira, Figma, SQL, Data Lens, Make, Active Pices, Claude/GPT, Lovable</div></div>
+                    <div class="stack-block"><div class="stack-label">Маркетинг</div><div class="stack-items">Сегментация ЦА и упаковка коммуникации, поиск каналов привлечения, работа с инфлюенсерами, копирайтинг и расчет стоимости привлечения</div></div>
+                    <div class="stack-block"><div class="stack-label">Технологии</div><div class="stack-items">AI, TG-боты, VK/TG mini apps, CV, ML, Speech Recognition</div></div>
                 </div>
-
                 <hr class="divider">
-
                 <div class="sidebar-section">
                     <div class="section-title">Образование</div>
                     <div class="edu-item">
@@ -414,16 +264,12 @@
                         <div class="edu-year">2017 · Среднее специальное</div>
                     </div>
                 </div>
-
                 <hr class="divider">
-
                 <div class="sidebar-section">
                     <div class="section-title">Язык</div>
                     <div style="font-size: 12px;">Русский — родной</div>
                 </div>
-
                 <hr class="divider">
-
                 <div class="sidebar-section">
                     <div class="section-title">Ссылки</div>
                     <div class="link-list">
